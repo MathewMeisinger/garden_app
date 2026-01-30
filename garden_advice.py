@@ -1,28 +1,52 @@
-# Hardcoded values for the season and plant type
-season = "summer"  # TODO: Replace with input() to allow user interaction.
-plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
+# variables for storing user input
+season = ""
+plant_type = ""
+season_advice_str = ""
+plant_advice_str = ""
 
-# Variable to hold gardening advice
-advice = ""
 
-# Determine advice based on the season
-if season == "summer":
-    advice += "Water your plants regularly and provide some shade.\n"
-elif season == "winter":
-    advice += "Protect your plants from frost with covers.\n"
-else:
-    advice += "No advice for this season.\n"
+def get_user_input():
+    global season, plant_type
+    season += input("Enter the current season (summer/winter): ")
+    plant_type += input("Enter the type of plant (flower/vegetable): ")
 
-# Determine advice based on the plant type
-if plant_type == "flower":
-    advice += "Use fertiliser to encourage blooms."
-elif plant_type == "vegetable":
-    advice += "Keep an eye out for pests!"
-else:
-    advice += "No advice for this type of plant."
+    return season, plant_type
 
-# Print the generated advice
-print(advice)
+
+def season_advice(season):
+    # Determine advice based on the season
+    global season_advice_str
+    if season == "summer":
+        season_advice_str += "Water your plants regularly and provide some shade.\n"
+    elif season == "winter":
+        season_advice_str += "Protect your plants from frost with covers.\n"
+    else:
+        season_advice_str += "No advice for this season.\n"
+    return season_advice_str
+
+
+def plant_advice(plant_type):
+    # Determine advice based on the plant type
+    global plant_advice_str
+    if plant_type == "flower":
+        plant_advice_str += "Use fertiliser to encourage blooms."
+    elif plant_type == "vegetable":
+        plant_advice_str += "Keep an eye out for pests!"
+    else:
+        plant_advice_str += "No advice for this type of plant."
+
+    return plant_advice_str
+
+
+def main():
+    # Print the generated advice
+    get_user_input()
+    print(season_advice(season) + plant_advice(plant_type))
+
+
+if __name__ == "__main__":
+    main()
+
 
 # TODO: Examples of possible features to add:
 # - Add detailed comments explaining each block of code.
